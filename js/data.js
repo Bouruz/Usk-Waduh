@@ -75,14 +75,14 @@ const visiMisi = {
   // Data Siswa
   // ===========================
   const dataSiswa = {
-    nis: "12345678",
-    nama: "Dewi Lestari",
-    kelas: "XII RPL 1",
+    nis: "00646278",
+    nama: "Henry Rizki Nur Afit",
+    kelas: "XII RPL ",
     tempatLahir: "Jakarta",
-    tanggalLahir: "2007-01-10",
-    kelamin: "Perempuan",
+    tanggalLahir: "2006-12-20",
+    kelamin: "Laki-laki",
     agama: "Islam",
-    alamat: "Jl. Mawar No.2, Jakarta",
+    alamat: "Jl. Tabah Raya",
     citaCita: "Programmer",
     foto: "img/siswa1.jpg"
   };
@@ -103,10 +103,10 @@ const visiMisi = {
   // ===========================
   const nilaiRapor = {
     siswa: {
-      nis: "12345678",
-      nama: "Dewi Lestari",
-      kelas: "XII RPL 1",
-      Tahun: "2024-2025"
+    nis: "00646278",
+    nama: "Henry Rizki Nur Afit",
+    kelas: "XII RPL ",
+    Tahun: "2024-2025"
     },
     mataPelajaranUmum: [
       { mapel: "Pendidikan Agama", nilai: 85 },
