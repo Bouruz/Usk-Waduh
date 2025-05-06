@@ -234,7 +234,7 @@
 <body>
     <header>
         <div class="header-content">
-            <img src="img/logo-sekolah.png" alt="Logo SMK Hang Tuah 1 Jakarta" class="school-logo" />
+            <img src="./img/Logo Sekolah.png" alt="Logo SMK Hang Tuah 1 Jakarta" class="school-logo" />
             <h1 class="school-name">SMK Hang Tuah 1 Jakarta</h1>
             <p class="page-title">Profil Guru</p>
         </div>
@@ -351,6 +351,18 @@
         // Initial render
         document.addEventListener("DOMContentLoaded", function() {
             renderGuruCards(dataGuru);
+        });
+
+         // You can add JavaScript functionality here if needed
+         document.addEventListener('DOMContentLoaded', function() {
+            // Example: Add current year to footer
+            const currentYear = new Date().getFullYear();
+            const footer = document.createElement('footer');
+            footer.innerHTML = `<p>&copy; ${currentYear} SMK Hang Tuah 1 Jakarta. All rights reserved.</p>`;
+            footer.style.textAlign = 'center';
+            footer.style.padding = '1rem';
+            footer.style.color = '#666';
+            document.body.appendChild(footer);
         });
     </script>
 </body>
