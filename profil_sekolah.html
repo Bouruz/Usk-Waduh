@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Sekolah - SMK Hang Tuah 1 Jakarta</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #2b2d42;
+            --success-color: #38b000;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .school-logo {
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        .school-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        section {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-item {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-3px);
+            background-color: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* List Styles */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        li::before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            height: 1.5em;
+            background-color: rgba(56, 176, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Button Styles */
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            margin: 2rem auto;
+            padding: 0.8rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-home::before {
+            content: "←";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Achievement Badges */
+        .achievement-badge {
+            display: inline-block;
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .school-name {
+                font-size: 1.4rem;
+            }
+            
+            .page-title {
+                font-size: 1.2rem;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1.5rem;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="Logo Sekolah.png" alt="Logo SMK Hang Tuah 1 Jakarta" class="school-logo" />
+            <h1 class="school-name">SMK Hang Tuah 1 Jakarta</h1>
+            <p class="page-title">Profil Sekolah</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Visi & Misi Section -->
+        <section id="visiMisi">
+            <h2>Visi & Misi</h2>
+            <div id="visi">
+                <p><strong>Visi:</strong> Menjadi SMK unggulan yang menghasilkan lulusan berkompeten, berkarakter, dan mampu bersaing di era global.</p>
+            </div>
+            <div id="misi">
+                <h3>Misi:</h3>
+                <ul>
+                    <li>Menyelenggarakan pendidikan kejuruan yang berkualitas</li>
+                    <li>Mengembangkan kurikulum berbasis industri</li>
+                    <li>Menyediakan fasilitas pembelajaran yang memadai</li>
+                    <li>Membangun kerjasama dengan dunia usaha dan industri</li>
+                    <li>Menanamkan nilai-nilai karakter bangsa</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Jurusan dan Fasilitas Grid -->
+        <section>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h2>Jurusan</h2>
+                    <ul id="jurusanList">
+                        <li>Teknik Kendaraan Ringan Otomotif</li>
+                        <li>Teknik Elektronika Industri</li>
+                        <li>Teknik Komputer dan Jaringan</li>
+                        <li>Rekayasa Perangkat Lunak</li>
+                        <li>Multimedia</li>
+                        <li>Akuntansi</li>
+                        <li>Bisnis Daring dan Pemasaran</li>
+                    </ul>
+                </div>
+
+                <div class="grid-item">
+                    <h2>Fasilitas Sekolah</h2>
+                    <ul id="fasilitasList">
+                        <li>Laboratorium Komputer (4 ruang)</li>
+                        <li>Bengkel Otomotif</li>
+                        <li>Laboratorium Elektronika</li>
+                        <li>Perpustakaan Digital</li>
+                        <li>Lapangan Olahraga</li>
+                        <li>Ruang Praktik Bisnis</li>
+                        <li>Studio Multimedia</li>
+                        <li>Mushola</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prestasi Section -->
+        <section>
+            <h2>Prestasi Sekolah</h2>
+            <ul id="prestasiList">
+                <li>Juara 1 LKS Nasional 2024 - TKRO <span class="achievement-badge">Tingkat Nasional</span></li>
+                <li>Sekolah Adiwiyata Mandiri 2023 <span class="achievement-badge">Kementerian Lingkungan Hidup</span></li>
+                <li>Akreditasi A (Unggul) <span class="achievement-badge">BAN SM</span></li>
+                <li>Juara 2 Lomba Robotik Regional Jakarta <span class="achievement-badge">Tingkat Provinsi</span></li>
+                <li>Sekolah Pelaksana Kurikulum Merdeka <span class="achievement-badge">Kemendikbud</span></li>
+            </ul>
+        </section>
+
+        <!-- Back Button -->
+        <a href="home.html" class="btn-home">Kembali ke Home</a>
+    </main>
+
+    <script>
+        // You can add JavaScript functionality here if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Add current year to footer
+            const currentYear = new Date().getFullYear();
+            const footer = document.createElement('footer');
+            footer.innerHTML = `<p>&copy; ${currentYear} SMK Hang Tuah 1 Jakarta. All rights reserved.</p>`;
+            footer.style.textAlign = 'center';
+            footer.style.padding = '1rem';
+            footer.style.color = '#666';
+            document.body.appendChild(footer);
+        });
+    </script>
+</body>
+</html>

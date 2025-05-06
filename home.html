@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - Sistem Akademik</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #2b2d42;
+            --success-color: #38b000;
+            --warning-color: #ffaa00;
+            --danger-color: #ef233c;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .school-logo {
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .school-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .system-name {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .user-info {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Navigation Styles */
+        nav {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 0.5rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Styles */
+        .content {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            flex: 1 1 350px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: var(--dark-color);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+        }
+
+        .date-badge {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: auto;
+            font-weight: 500;
+        }
+
+        /* Dashboard Widgets */
+        .dashboard-widgets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding: 1rem;
+            justify-content: center;
+        }
+
+        .widget {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            box-shadow: var(--box-shadow);
+            flex: 1 1 200px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .widget:hover {
+            transform: translateY(-3px);
+        }
+
+        .widget-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .widget-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .widget-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .school-name {
+                font-size: 1.2rem;
+            }
+            
+            .user-info {
+                position: static;
+                margin-top: 0.5rem;
+                justify-content: center;
+            }
+            
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <img src="Logo Sekolah.png" alt="Logo Sekolah" class="school-logo" />
+            <h1 class="school-name">SMK Hang Tuah 1 Jakarta</h1>
+            <p class="system-name">Sistem Informasi Akademik</p>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="profil_sekolah.html">Profil Sekolah</a>
+        <a href="profil_guru.html">Profil Guru</a>
+        <a href="profil_siswa.html">Profil Siswa</a>
+        <a href="jadwal.html">Jadwal</a>
+        <a href="rapor.html">Rapor</a>
+        <a href="pengaturan.html">Pengaturan</a>
+        <a href="login.html">Logout</a>
+    </nav>
+
+    <!-- Dashboard Widgets -->
+    <div class="dashboard-widgets">
+        <div class="widget">
+            <div class="widget-icon">👨‍🎓</div>
+            <div class="widget-value">1,250</div>
+            <div class="widget-label">Total Siswa</div>
+        </div>
+        <div class="widget">
+            <div class="widget-icon">👩‍🏫</div>
+            <div class="widget-value">68</div>
+            <div class="widget-label">Total Guru</div>
+        </div>
+        <div class="widget">
+            <div class="widget-icon">📚</div>
+            <div class="widget-value">24</div>
+            <div class="widget-label">Kelas</div>
+        </div>
+        <div class="widget">
+            <div class="widget-icon">📅</div>
+            <div class="widget-value">5</div>
+            <div class="widget-label">Kegiatan</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Pengumuman Card -->
+        <div class="card">
+            <h2>Pengumuman</h2>
+            <ul>
+                <li>
+                    Ujian Tengah Semester dimulai 20 Mei 2025
+                    <span class="date-badge">20 Mei 2025</span>
+                </li>
+                <li>
+                    Pengumpulan tugas akhir: 15 Mei 2025
+                    <span class="date-badge">15 Mei 2025</span>
+                </li>
+                <li>
+                    Perayaan HUT Sekolah: 5 Juni 2025
+                    <span class="date-badge">5 Juni 2025</span>
+                </li>
+                <li>
+                    Pembagian rapor semester genap
+                    <span class="date-badge">28 Juni 2025</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Kegiatan Card -->
+        <div class="card">
+            <h2>Kegiatan Penting</h2>
+            <ul>
+                <li>
+                    Pra-LKS Wilayah: 10 Maret 2025
+                    <span class="date-badge">10 Mar 2025</span>
+                </li>
+                <li>
+                    UKK: 25 Juni 2025
+                    <span class="date-badge">25 Jun 2025</span>
+                </li>
+                <li>
+                    Kunjungan Industri: Agustus 2025
+                    <span class="date-badge">Agustus</span>
+                </li>
+                <li>
+                    Penilaian Akhir Semester: 1 Desember 2025
+                    <span class="date-badge">1 Des 2025</span>
+                </li>
+                <li>
+                    Libur Semester: 15 Desember 2025
+                    <span class="date-badge">15 Des 2025</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // You can add JavaScript functionality here if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Add current year to footer
+            const currentYear = new Date().getFullYear();
+            const footer = document.createElement('footer');
+            footer.innerHTML = `<p>&copy; ${currentYear} SMK Hang Tuah 1 Jakarta. All rights reserved.</p>`;
+            footer.style.textAlign = 'center';
+            footer.style.padding = '1rem';
+            footer.style.color = '#666';
+            document.body.appendChild(footer);
+        });
+    </script>
+
+    <script src="js/data.js"></script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jadwal Pembelajaran - SMK Hang Tuah 1 Jakarta</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #2b2d42;
+            --success-color: #38b000;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .school-logo {
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .school-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .page-title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Schedule Info */
+        .schedule-info {
+            background-color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        /* Table Styles */
+        .schedule-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+        }
+
+        td {
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        tr:nth-child(even) td {
+            background-color: var(--light-color);
+        }
+
+        tr:hover td {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        .time-column {
+            font-weight: 500;
+            color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.05) !important;
+        }
+
+        /* Button Styles */
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            margin: 2rem auto 0;
+            padding: 0.8rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-home::before {
+            content: "←";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .school-name {
+                font-size: 1.3rem;
+            }
+            
+            .page-title {
+                font-size: 1.1rem;
+            }
+            
+            .schedule-info {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            th, td {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .schedule-container {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            th, td {
+                padding: 0.6rem 0.3rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="Logo Sekolah.png" alt="Logo SMK Hang Tuah 1 Jakarta" class="school-logo" />
+            <h1 class="school-name">SMK Hang Tuah 1 Jakarta</h1>
+            <p class="page-title">Jadwal Pembelajaran</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Schedule Info -->
+        <div class="schedule-info">
+            <div class="info-item">
+                <span class="info-label">Kelas:</span>
+                <span id="kelas-info">XII RPL 1</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Tahun Ajaran:</span>
+                <span id="tahun-ajaran">2024/2025</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Semester:</span>
+                <span id="semester-info">Genap</span>
+            </div>
+        </div>
+
+        <!-- Schedule Table -->
+        <div class="schedule-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hari</th>
+                        <th>Jam ke-1 (07:30-09:00)</th>
+                        <th>Jam ke-2 (09:00-10:30)</th>
+                        <th>Jam ke-3 (10:30-12:00)</th>
+                        <th>Jam ke-4 (13:00-14:30)</th>
+                    </tr>
+                </thead>
+                <tbody id="jadwalTable">
+                    <!-- Jadwal akan dimuat dengan JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Back Button -->
+        <a href="home.html" class="btn-home">Kembali ke Home</a>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script>
+        // Sample schedule data (replace with your actual data from data.js)
+        const jadwalData = [
+            {
+                hari: "Senin",
+                pelajaran1: "Matematika",
+                pelajaran2: "Pendidikan Agama dan Budi Pekerti",
+                pelajaran3: "Bahasa Indonesia",
+                pelajaran4: "Olahraga"
+            },
+            {
+                hari: "Selasa",
+                pelajaran1: "Bahasa Inggris",
+                pelajaran2: "Pendidikan Pancasila",
+                pelajaran3: "Rekayasa Perangkat Lunak",
+                pelajaran4: "Kewirausahaan"
+            },
+            {
+                hari: "Rabu",
+                pelajaran1: "Matematika",
+                pelajaran2: "Dasar Pemrograman",
+                pelajaran3: "Bahasa Indonesia",
+                pelajaran4: "Bimbingan Konseling"
+            },
+            {
+                hari: "Kamis",
+                pelajaran1: "Pendidikan Agama dan Budi Pekerti",
+                pelajaran2: "Pendidikan Pancasila",
+                pelajaran3: "Rekayasa Perangkat Lunak",
+                pelajaran4: "Bahasa Inggris"
+            },
+            {
+                hari: "Jumat",
+                pelajaran1: "Bahasa Inggris",
+                pelajaran2: "Matematika",
+                pelajaran3: "Dasar Pemrograman",
+                pelajaran4: "-"
+            }
+        ];
+
+        // Function to populate schedule table
+        function populateSchedule() {
+            const tableBody = document.getElementById("jadwalTable");
+            tableBody.innerHTML = "";
+
+            jadwalData.forEach(jadwal => {
+                const row = document.createElement("tr");
+
+                // Day cell
+                const hariCell = document.createElement("td");
+                hariCell.textContent = jadwal.hari;
+                hariCell.classList.add("time-column");
+                row.appendChild(hariCell);
+
+                // Subject cells
+                for (let i = 1; i <= 4; i++) {
+                    const cell = document.createElement("td");
+                    const pelajaran = jadwal[`pelajaran${i}`] || "-";
+                    
+                    // Add teacher info if available
+                    const teacherInfo = jadwal[`guru${i}`] ? `<br><small>${jadwal[`guru${i}`]}</small>` : "";
+                    cell.innerHTML = pelajaran + teacherInfo;
+                    
+                    row.appendChild(cell);
+                }
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            populateSchedule();
+            
+            // Add current year to footer
+            const currentYear = new Date().getFullYear();
+            const footer = document.createElement('footer');
+            footer.innerHTML = `<p style="text-align: center; color: #666; padding: 1rem;">&copy; ${currentYear} SMK Hang Tuah 1 Jakarta. All rights reserved.</p>`;
+            document.body.appendChild(footer);
+        });
+    </script>
+</body>
+</html>

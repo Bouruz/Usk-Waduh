@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Guru - SMK Hang Tuah 1 Jakarta</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --light-color: #f8f9fa;
+            --dark-color: #2b2d42;
+            --success-color: #38b000;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .school-logo {
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .school-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .page-title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Teacher Container */
+        .guru-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Teacher Card */
+        .guru-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .guru-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .guru-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .guru-card h3 {
+            margin: 0 0 0.5rem;
+            color: var(--dark-color);
+            font-size: 1.2rem;
+        }
+
+        .guru-card .info-list {
+            text-align: left;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .guru-card .info-item {
+            display: flex;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .guru-card .info-label {
+            font-weight: 500;
+            color: var(--primary-color);
+            min-width: 120px;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        .filter-select {
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            background-color: white;
+            min-width: 200px;
+        }
+
+        /* Button Styles */
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            margin: 2rem auto 0;
+            padding: 0.8rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .btn-home:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-home::before {
+            content: "←";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1rem;
+            }
+            
+            .school-name {
+                font-size: 1.3rem;
+            }
+            
+            .page-title {
+                font-size: 1.1rem;
+            }
+            
+            .guru-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-filter {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="img/logo-sekolah.png" alt="Logo SMK Hang Tuah 1 Jakarta" class="school-logo" />
+            <h1 class="school-name">SMK Hang Tuah 1 Jakarta</h1>
+            <p class="page-title">Profil Guru</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Search and Filter Section -->
+        <div class="search-filter">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari guru..." />
+            </div>
+            <select class="filter-select" id="mapelFilter">
+                <option value="">Semua Mata Pelajaran</option>
+                <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                <option value="Pengembangan Gim">Pengembangan Gim</option>
+                <option value="Matematika">Matematika</option>
+            </select>
+        </div>
+
+        <!-- Teachers Container -->
+        <div class="guru-container" id="guruContainer">
+            <!-- Data guru akan dimuat dengan JS -->
+        </div>
+
+        <!-- Back Button -->
+        <a href="home.html" class="btn-home">Kembali ke Home</a>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script>
+        const guruContainer = document.getElementById("guruContainer");
+        const searchInput = document.getElementById("searchInput");
+        const mapelFilter = document.getElementById("mapelFilter");
+
+        // Function to format date
+        function formatTanggal(tanggal) {
+            if (!tanggal) return "-";
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(tanggal).toLocaleDateString('id-ID', options);
+        }
+
+        // Function to render teacher cards
+        function renderGuruCards(gurus) {
+            guruContainer.innerHTML = "";
+            
+            if (gurus.length === 0) {
+                guruContainer.innerHTML = `<p style="grid-column: 1/-1; text-align: center;">Tidak ada guru yang ditemukan</p>`;
+                return;
+            }
+
+            gurus.forEach(guru => {
+                const card = document.createElement("div");
+                card.className = "guru-card";
+
+                // Photo
+                const img = document.createElement("img");
+                img.src = guru.foto || "img/default.jpg";
+                img.alt = guru.nama;
+                img.loading = "lazy";
+
+                // Info
+                const info = document.createElement("div");
+                info.className = "info-list";
+                
+                info.innerHTML = `
+                    <h3>${guru.nama}</h3>
+                    <div class="info-item">
+                        <span class="info-label">Mata Pelajaran:</span>
+                        <span>${guru.mapel}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">TTL:</span>
+                        <span>${guru.tempatLahir}, ${formatTanggal(guru.tanggalLahir)}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Jenis Kelamin:</span>
+                        <span>${guru.kelamin}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Agama:</span>
+                        <span>${guru.agama}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Alamat:</span>
+                        <span>${guru.alamat}</span>
+                    </div>
+                `;
+
+                card.appendChild(img);
+                card.appendChild(info);
+                guruContainer.appendChild(card);
+            });
+        }
+
+        // Filter function
+        function filterGurus() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedMapel = mapelFilter.value;
+            
+            const filteredGurus = dataGuru.filter(guru => {
+                const matchesSearch = guru.nama.toLowerCase().includes(searchTerm) || 
+                                     guru.mapel.toLowerCase().includes(searchTerm);
+                const matchesMapel = selectedMapel === "" || guru.mapel === selectedMapel;
+                return matchesSearch && matchesMapel;
+            });
+            
+            renderGuruCards(filteredGurus);
+        }
+
+        // Event listeners
+        searchInput.addEventListener("input", filterGurus);
+        mapelFilter.addEventListener("change", filterGurus);
+
+        // Initial render
+        document.addEventListener("DOMContentLoaded", function() {
+            renderGuruCards(dataGuru);
+        });
+    </script>
+</body>
+</html>
